@@ -5,7 +5,7 @@ FPS = 100
 SCREENSIZE = (640, 480)
 
 IMAGE_PATHS = {
-    'rabbit': os.path.join(os.getcwd(), 'resource/image/dude.png'),
+    'rabbit': os.path.join(os.getcwd(), 'resources/images/dude.png'),
     'grass': os.path.join(os.getcwd(), 'resources/images/grass.png'),
     'castle': os.path.join(os.getcwd(), 'resources/images/castle.png'),
     'arrow': os.path.join(os.getcwd(), 'resources/images/bullet.png'),
