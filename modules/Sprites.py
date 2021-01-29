@@ -13,13 +13,13 @@ class BunnySprite(pygame.sprite.Sprite):
 
     def move(self, screensize, direction):
         if direction == 'left':
-            self.rect.left = max(self.rect.left-self.speed, 0)
+            self.rect.left = max(self.rect.left - self.speed, 0)
         elif direction == 'right':
-            self.rect.left = min(self.rect.left+self.speed, screensize[0])
+            self.rect.left = min(self.rect.left + self.speed, screensize[0])
         elif direction == 'up':
-            self.rect.top = max(self.rect.top-self, 0)
+            self.rect.top = max(self.rect.top - self.speed, 0)
         elif direction == 'down':
-            self.rect.top = min(self.rect+self.speed, screensize[1])
+            self.rect.top = min(self.rect.top + self.speed, screensize[1])
 
     def draw(self, screen, mouse_pos):
         angle = math.atan2(mouse_pos[1]-(self.rect.top+32), mouse_pos[0]-(self.rect.left+256))

@@ -126,9 +126,11 @@ def main():
             running, exitcode = False, True
 
         pygame.display.flip()
-        accuracy = acc_record[0] / acc_record[1] * 100 if acc_record[1] > 0 else 0
-        accuracy = '%.2f' % accuracy
-        showEndGameInterface(screen, exitcode, accuracy, game_image)
+        clock.tick(cfg.FPS)
+
+    accuracy = acc_record[0] / acc_record[1] * 100 if acc_record[1] > 0 else 0
+    accuracy = '%.2f' % accuracy
+    showEndGameInterface(screen, exitcode, accuracy, game_image)
 
 
 '''run'''
