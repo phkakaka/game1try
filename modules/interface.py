@@ -18,5 +18,6 @@ def showEndGameInterface(screen, exitcode, accuracy, game_images):
             screen.blit(game_images['youwin'], (0, 0))
         else:
             screen.blit(game_images['gameover'], (0, 0))
+
         screen.blit(text, text_rect)
         pygame.display.flip()
