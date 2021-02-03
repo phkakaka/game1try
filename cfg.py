@@ -14,6 +14,9 @@ IMAGE_PATHS = {
     'health': os.path.join(os.getcwd(), 'resources/images/health.png'),
     'gameover': os.path.join(os.getcwd(), 'resources/images/gameover.png'),
     'youwin': os.path.join(os.getcwd(), 'resources/images/youwin.png'),
+    'sk': os.path.join(os.getcwd(), 'resources/images/sk.jpg'),
+    'type': os.path.join(os.getcwd(), 'resources/images/type.png'),
+    'newgrass': os.path.join(os.getcwd(), 'resources/images/newgrass.png')
 }
 
 SOUNDS_PATHS = {
