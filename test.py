@@ -1,10 +1,13 @@
 import math
 import os
 import random
+import sys
 
 import cfg
 import pygame
 import time
+
+from snake import SnakeSprite
 
 screen = pygame.display.set_mode((640, 480))
 bunny_pic = pygame.image.load(cfg.IMAGE_PATHS['sk'])
@@ -25,6 +28,8 @@ def main():
     badX = random.randint(50, cfg.SCREENSIZE[0])
     badY = random.randint(50, cfg.SCREENSIZE[1])
 
+    snake = SnakeSprite(bunny_pic, (50, 50))
+
     while running:
         screen.fill(0)
         for x in range(cfg.SCREENSIZE[0] // game_image['newgrass'].get_width() + 1):
@@ -33,30 +38,23 @@ def main():
 
         screen.blit(bad_pic, (badX, badY))
 
-        bunny_speed = 5
+        snake_speed = 5
         pressed_key = pygame.key.get_pressed()
         if pressed_key[pygame.K_d] or pressed_key[pygame.K_RIGHT]:
-            bunnyX = bunnyX + bunny_speed
+            snake.snake_move('right', snake_speed)
         elif pressed_key[pygame.K_a] or pressed_key[pygame.K_LEFT]:
-            bunnyX = bunnyX - bunny_speed
+            snake.snake_move('left', snake_speed)
         elif pressed_key[pygame.K_w] or pressed_key[pygame.K_UP]:
-            bunnyY = bunnyY - bunny_speed
+            snake.snake_move('up', snake_speed)
         elif pressed_key[pygame.K_s] or pressed_key[pygame.K_DOWN]:
-            bunnyY = bunnyY + bunny_speed
-        if bunnyX > cfg.SCREENSIZE[0]:
-            bunnyX = 0
-        elif bunnyX <= 0:
-            bunnyX = cfg.SCREENSIZE[0]
-        if bunnyY > cfg.SCREENSIZE[1]:
-            bunnyY = 0
-        elif bunnyY <= 0:
-            bunnyY = cfg.SCREENSIZE[1]
+            snake.snake_move('down', snake_speed)
 
-        if (abs(bunnyX - badX) < 5) and (abs(bunnyY - badY) < 5):
+        if (abs(snake.rect.left - badX) < 10) and (abs(snake.rect.top - badY) < 10):
             badX = random.randint(50, cfg.SCREENSIZE[0])
             badY = random.randint(50, cfg.SCREENSIZE[1])
+            snake.snake_grow()
 
-        screen.blit(bunny_pic, (bunnyX, bunnyY))
+        snake.draw_snake(screen)
         pygame.display.flip()
         clock.tick(cfg.FPS)
 
