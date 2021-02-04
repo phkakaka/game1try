@@ -1,7 +1,7 @@
 '''config file'''
 import os
 
-FPS = 100
+FPS = 24
 SCREENSIZE = (640, 480)
 
 IMAGE_PATHS = {

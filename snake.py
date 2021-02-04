@@ -30,22 +30,22 @@ class SnakeSprite(pygame.sprite.Sprite):
         self.image = image
         self.rect = self.image.get_rect()
         self.rect.left, self.rect.top = position
-        self.length = 0
-        self.snake_block_array = {0: SnakeBlock(image, position)}
+        self.length = 1
+        self.snake_block_array = {1: SnakeBlock(image, position)}
         self.snake_addition = SnakeBlock(image, position)
 
     def snake_grow(self):
-        if self.length < 10:
+        if self.length < 20:
             self.length += 1
-            self.snake_block_array[self.length] = (self.image, self.snake_addition.position)
+            self.snake_block_array[self.length] = SnakeBlock(self.image, self.snake_addition.position)
 
     def snake_move(self, direction, speed):
-        self.snake_block_array[0].move(direction, speed)
-        for k in range(len(self.snake_block_array.keys()) - 1):
-            self.snake_block_array[k + 1].position = self.snake_block_array[k].position
         self.snake_addition.position = self.snake_block_array[self.length].position
-        self.rect.left, self.rect.top = self.snake_block_array[0].position
+        self.snake_block_array[1].move(direction, speed)
+        for k in range(len(self.snake_block_array.keys()), 1, - 1):
+            self.snake_block_array[k].position = self.snake_block_array[k-1].position
+        self.rect.left, self.rect.top = self.snake_block_array[1].position
 
     def draw_snake(self, screen):
-        for k in range(len(self.snake_block_array.keys())):
+        for k in range(1, len(self.snake_block_array.keys()) + 1, 1):
             screen.blit(self.snake_block_array[k].image, self.snake_block_array[k].position)
