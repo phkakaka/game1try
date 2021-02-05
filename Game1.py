@@ -12,8 +12,9 @@ import random
 import pygame
 from modules import *
 
-
 '''initial the game'''
+
+
 def initGame():
     pygame.init()
     pygame.mixer.init()
@@ -56,12 +57,13 @@ def main():
 
     while running:
         screen.fill(0)
-        for x in range(cfg.SCREENSIZE[0]//game_image['grass'].get_width()+1):
-            for y in range(cfg.SCREENSIZE[1]//game_image['grass'].get_height()+1):
-                screen.blit(game_image['grass'], (x*100, y*100))
-        for i in range(4):screen.blit(game_image['castle'], (0, 30+105*i))
+        for x in range(cfg.SCREENSIZE[0] // game_image['ground'].get_width() + 1):
+            for y in range(cfg.SCREENSIZE[1] // game_image['grass'].get_height() + 1):
+                screen.blit(game_image['grass'], (x * 100, y * 100))
+        for i in range(4): screen.blit(game_image['castle'], (0, 30 + 105 * i))
 
-        countdown_text = font.render(str((90000-pygame.time.get_ticks())//60000)+":"+str((90000-pygame.time.get_ticks())//1000%60).zfill(2), True, (0, 0, 0))
+        countdown_text = font.render(str((90000 - pygame.time.get_ticks()) // 60000) + ":" + str(
+            (90000 - pygame.time.get_ticks()) // 1000 % 60).zfill(2), True, (0, 0, 0))
         countdown_rect = countdown_text.get_rect()
         countdown_rect.topright = [635, 5]
         screen.blit(countdown_text, countdown_rect)
@@ -74,8 +76,10 @@ def main():
                 game_sounds['shoot'].play()
                 acc_record[1] += 1
                 mouse_pos = pygame.mouse.get_pos()
-                angle = math.atan2(mouse_pos[1]-(bunny.rotated_position[1]+32), mouse_pos[0]-(bunny.rotated_position[0]+26))
-                arrow = ArrowSprite(game_image.get('arrow'), (angle, bunny.rotated_position[0]+32, bunny.rotated_position[1]+26))
+                angle = math.atan2(mouse_pos[1] - (bunny.rotated_position[1] + 32),
+                                   mouse_pos[0] - (bunny.rotated_position[0] + 26))
+                arrow = ArrowSprite(game_image.get('arrow'),
+                                    (angle, bunny.rotated_position[0] + 32, bunny.rotated_position[1] + 26))
                 arrow_sprites_group.add(arrow)
 
         key_pressed = pygame.key.get_pressed()
@@ -96,7 +100,7 @@ def main():
             badguy = BadguySprite(game_image.get('badguy'), position=(640, random.randint(50, 430)))
             badguy_sprites_group.add(badguy)
             badtimer = 100 - (badtimer1 * 2)
-            badtimer1 = 20 if badtimer1>=20 else badtimer1+2
+            badtimer1 = 20 if badtimer1 >= 20 else badtimer1 + 2
         badtimer -= 1
         for badguy in badguy_sprites_group:
             if badguy.update():
@@ -118,7 +122,7 @@ def main():
 
         screen.blit(game_image.get('healthbar'), (5, 5))
         for i in range(healthvalue):
-            screen.blit(game_image.get('health'), (i+8, 8))
+            screen.blit(game_image.get('health'), (i + 8, 8))
 
         if pygame.time.get_ticks() >= 90000:
             running, exitcode = False, True
@@ -136,32 +140,3 @@ def main():
 '''run'''
 if __name__ == '__main__':
     main()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -2,21 +2,20 @@
 import os
 
 FPS = 24
-SCREENSIZE = (640, 480)
+SCREENSIZE = (600, 500)
 
 IMAGE_PATHS = {
-    'rabbit': os.path.join(os.getcwd(), 'resources/images/dude.png'),
     'grass': os.path.join(os.getcwd(), 'resources/images/grass.png'),
-    'castle': os.path.join(os.getcwd(), 'resources/images/castle.png'),
     'arrow': os.path.join(os.getcwd(), 'resources/images/bullet.png'),
-    'badguy': os.path.join(os.getcwd(), 'resources/images/badguy.png'),
     'healthbar': os.path.join(os.getcwd(), 'resources/images/healthbar.png'),
     'health': os.path.join(os.getcwd(), 'resources/images/health.png'),
     'gameover': os.path.join(os.getcwd(), 'resources/images/gameover.png'),
     'youwin': os.path.join(os.getcwd(), 'resources/images/youwin.png'),
     'sk': os.path.join(os.getcwd(), 'resources/images/sk.jpg'),
     'type': os.path.join(os.getcwd(), 'resources/images/type.png'),
-    'newgrass': os.path.join(os.getcwd(), 'resources/images/newgrass.png')
+    'newgrass': os.path.join(os.getcwd(), 'resources/images/newgrass.png'),
+    'ground': os.path.join(os.getcwd(), 'resources/images/back.png'),
+    'train': os.path.join(os.getcwd(), 'resources/images/train.png')
 }
 
 SOUNDS_PATHS = {

@@ -33,19 +33,21 @@ class SnakeSprite(pygame.sprite.Sprite):
         self.length = 1
         self.snake_block_array = {1: SnakeBlock(image, position)}
         self.snake_addition = SnakeBlock(image, position)
+        self.blood = 10
+        self.fullblood = 10
 
     def snake_grow(self):
-        if self.length < 20:
+        if self.length < 50:
             self.length += 1
             self.snake_block_array[self.length] = SnakeBlock(self.image, self.snake_addition.position)
 
     def snake_move(self, direction, speed):
         self.snake_addition.position = self.snake_block_array[self.length].position
-        self.snake_block_array[1].move(direction, speed)
         for k in range(len(self.snake_block_array.keys()), 1, - 1):
             self.snake_block_array[k].position = self.snake_block_array[k-1].position
+        self.snake_block_array[1].move(direction, speed)
         self.rect.left, self.rect.top = self.snake_block_array[1].position
 
     def draw_snake(self, screen):
-        for k in range(1, len(self.snake_block_array.keys()) + 1, 1):
+        for k in range(self.length, 0, -1):
             screen.blit(self.snake_block_array[k].image, self.snake_block_array[k].position)
