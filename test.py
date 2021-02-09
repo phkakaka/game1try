@@ -12,8 +12,8 @@ def main():
     pygame.init()
     pygame.font.init()
     screen = pygame.display.set_mode((cfg.SCREENSIZE[0], cfg.SCREENSIZE[1]))
-    snake_pic = pygame.image.load(cfg.IMAGE_PATHS['train'])
-    food_pic = pygame.image.load(cfg.IMAGE_PATHS['type'])
+    snake_pic = pygame.image.load(cfg.IMAGE_PATHS['snake'])
+    food_pic = pygame.image.load(cfg.IMAGE_PATHS['apple'])
     bloodbar = pygame.image.load(cfg.IMAGE_PATHS['healthbar'])
     blood = pygame.image.load(cfg.IMAGE_PATHS['health'])
     font = pygame.font.Font(None, 30)
@@ -96,6 +96,24 @@ def main():
         pygame.display.flip()
         clock.tick(cfg.FPS)
 
+        if snake.blood <= 0:
+            running = False
+            exitcode = 0
+        elif snake.length >= 10:
+            running = False
+            exitcode = 1
+
+    while True:
+        screen.fill(0)
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+        if exitcode == 0:
+            screen.blit(game_image['gameover'], [0, 0])
+        elif exitcode == 1:
+            screen.blit(game_image['youwin'], [0, 0])
+        pygame.display.flip()
 
 if __name__ == '__main__':
     main()

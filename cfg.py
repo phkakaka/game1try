@@ -15,7 +15,9 @@ IMAGE_PATHS = {
     'type': os.path.join(os.getcwd(), 'resources/images/type.png'),
     'newgrass': os.path.join(os.getcwd(), 'resources/images/newgrass.png'),
     'ground': os.path.join(os.getcwd(), 'resources/images/back.png'),
-    'train': os.path.join(os.getcwd(), 'resources/images/train.png')
+    'train': os.path.join(os.getcwd(), 'resources/images/train.png'),
+    'snake': os.path.join(os.getcwd(), 'resources/images/snake.png'),
+    'apple': os.path.join(os.getcwd(), 'resources/images/apple.jpg')
 }
 
 SOUNDS_PATHS = {

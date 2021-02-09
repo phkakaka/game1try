@@ -37,7 +37,7 @@ class SnakeSprite(pygame.sprite.Sprite):
         self.blood = self.fullblood
 
     def snake_grow(self):
-        if self.length < 50:
+        if self.length < 10:
             self.length += 1
             self.snake_block_array[self.length] = SnakeBlock(self.image, self.snake_addition.position)
 
@@ -51,7 +51,7 @@ class SnakeSprite(pygame.sprite.Sprite):
                 or (self.snake_block_array[1].rect.top < 0)\
                 or (self.snake_block_array[1].rect.right > cfg.SCREENSIZE[0])\
                 or (self.snake_block_array[1].rect.bottom > cfg.SCREENSIZE[1]):
-            self.blood -= 1
+            self.blood -= 10
 
     def draw_snake(self, screen):
         for k in range(self.length, 0, -1):
